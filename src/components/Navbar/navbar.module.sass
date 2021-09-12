@@ -1,0 +1,47 @@
+/* navbar
+
+.nav
+  padding: 20px 50px
+  position: relative
+  background-color: #ffffff
+  width: 100%
+  margin: 0 auto
+  margin-top: 2em
+  border-radius: 15px
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px
+  display: flex
+  align-items: center
+
+.nav__logo
+  width: 50px
+  height: 50px
+
+  > img
+    width: 100%
+
+.nav__list
+  margin: 0
+  padding: 0
+  display: flex
+  list-style: none
+  font-size: 0
+  margin-left: 100px
+
+.nav__list__item
+  font-size: 15px
+  font-size: 20px
+  margin-right: 20px
+  transition: transform .3s ease
+
+  &:last-child
+    margin-right: 0
+  a
+    color: #181818
+    text-decoration: none
+    &.active
+      background-color: #0b24ff
+      color: #fff
+
+  &:active
+    transform: scale(0.9)
+    
