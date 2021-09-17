@@ -34,6 +34,14 @@ let state = {
             {id: 3, msg: 'What did u tal about?'},
             {id: 4, msg: 'What did u tal about?'},
           ]
+    },
+    
+    musicPage: {
+      musicData: [
+        {id: 1, artist: 'Lil peep', song: 'Viens', img: "https://tntmusic.ru/media/content/article/2019-11-19_11-43-20__c8c75a3a-0ac1-11ea-9fd6-d1f808b6ab45.jpg"},
+        {id: 2, artist: 'Lil peep', song: 'Lil Kennedy', img: "https://tntmusic.ru/media/content/article/2019-11-19_11-43-20__c8c75a3a-0ac1-11ea-9fd6-d1f808b6ab45.jpg"},
+        {id: 3, artist: 'Lil peep', song: 'Benz Truck pt.2', img: "https://tntmusic.ru/media/content/article/2019-11-19_11-43-20__c8c75a3a-0ac1-11ea-9fd6-d1f808b6ab45.jpg"},
+      ]
     }
 
 }

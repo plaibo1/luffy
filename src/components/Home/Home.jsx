@@ -1,8 +1,16 @@
+import React from 'react'
 import Post from './PostsWall/PostsWall.jsx';
 import s from './home.module.sass'
 import Friends from './Friends/Friends.jsx';
 
 const Home = (props) => {
+
+    let testRef = React.createRef();
+
+    let foo = () => {
+        let text = testRef.current.value;
+        alert(text)
+    }
 
     return (
         <div className={s.Home}>
@@ -27,8 +35,8 @@ const Home = (props) => {
                 <div className={s.Home__wall}>
 
                     <div className={s.Home__wall__form}>
-                        <textarea className={s.Home__wall__form__text}></textarea>
-                        <button className={s.Home__wall__form__button}>
+                        <textarea className={s.Home__wall__form__text} ref={testRef} ></textarea>
+                        <button className={s.Home__wall__form__button} onClick={foo}>
                             Send
                         </button>
                     </div>
