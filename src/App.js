@@ -16,7 +16,9 @@ function App(props) {
         <div className="pageContainer">
 
             <Route path='/home' 
-                render={() => <Home state={props.state.homePage}/>}/>
+                render={() => <Home state={props.state.homePage} 
+                                    addPost={props.addPost}
+                        />}/>
 
             <Route path='/dialogs' render={()=> <Dialogs 
                 state={props.state.dialogPage} />}/>

@@ -5,11 +5,11 @@ import Friends from './Friends/Friends.jsx';
 
 const Home = (props) => {
 
-    let testRef = React.createRef();
+    let newPostElem = React.createRef();
 
-    let foo = () => {
-        let text = testRef.current.value;
-        alert(text)
+    let addPost = () => {
+        let text = newPostElem.current.value;
+        props.addPost(text);
     }
 
     return (
@@ -35,8 +35,8 @@ const Home = (props) => {
                 <div className={s.Home__wall}>
 
                     <div className={s.Home__wall__form}>
-                        <textarea className={s.Home__wall__form__text} ref={testRef} ></textarea>
-                        <button className={s.Home__wall__form__button} onClick={foo}>
+                        <textarea className={s.Home__wall__form__text} ref={newPostElem} ></textarea>
+                        <button className={s.Home__wall__form__button} onClick={addPost}>
                             Send
                         </button>
                     </div>

@@ -1,3 +1,5 @@
+import { rerenderEntireTree } from "../render";
+
 let state = {
     
     homePage: {
@@ -17,7 +19,6 @@ let state = {
           {id: 6, name: 'Yorgan', avatar: 'https://sun9-15.userapi.com/impg/DmYfUskzNo_4auy-MmOcOpy5_0WzViqOjGHp0g/al91JFi1m9U.jpg?size=796x1000&quality=96&sign=6fd153abeebd0fd137e850ef9baadc26&type=album'},
         ]
     },
-    
     dialogPage: {
         dialogsData: [
             {id: 1, name: 'Alex Ferguson'},
@@ -45,5 +46,18 @@ let state = {
     }
 
 }
+
+
+export let addPost = (msg) => {
+  let newPost = {
+    id: 5,
+    msg: msg,
+    likesCounter: 0
+  };
+
+  state.homePage.postData.push(newPost)
+  rerenderEntireTree(state)
+}
+
 
 export default state;
