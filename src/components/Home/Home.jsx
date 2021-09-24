@@ -2,14 +2,18 @@ import React from 'react'
 import Post from './PostsWall/PostsWall.jsx';
 import s from './home.module.sass'
 import Friends from './Friends/Friends.jsx';
+import { addPostActionCreator, updatePostOnChangeActionCreator } from '../../Redux/homePage-reducer';
 
 const Home = (props) => {
 
     let newPostElem = React.createRef();
 
-    let addPost = () => {
+    let addPost = () => props.dispatch(addPostActionCreator());
+
+    let onPostChange = () => {
         let text = newPostElem.current.value;
-        props.addPost(text);
+        let action = updatePostOnChangeActionCreator(text);
+        props.dispatch(action)
     }
 
     return (
@@ -35,13 +39,17 @@ const Home = (props) => {
                 <div className={s.Home__wall}>
 
                     <div className={s.Home__wall__form}>
-                        <textarea className={s.Home__wall__form__text} ref={newPostElem} ></textarea>
+                        <textarea className={s.Home__wall__form__text}
+                                  onChange={onPostChange}
+                                  ref={newPostElem}
+                                  value={props.state.textareaValue} 
+                        />
                         <button className={s.Home__wall__form__button} onClick={addPost}>
                             Send
                         </button>
                     </div>
 
-                    <Post postData={props.state.postData} />
+                    <Post postData={props.state.postData} dispatch={props.dispatch}/>
 
                 </div>
 

@@ -1,11 +1,11 @@
 import s from './dialogs.module.sass'
 import DialogItem from './DialogsItem/DialogsItem'
 import Message from './Message/Message'
+import MsgTextArea from './Message/MsgTextarea/MsgTextarea'
 
 
 const Dialogs = (props) => {
     
-
     let dialogElems = props.state.dialogsData.map((dialog) => {
         return <DialogItem id={dialog.id} name={dialog.name} />
     })
@@ -27,6 +27,7 @@ const Dialogs = (props) => {
 
                 <div className="messages">
                     {msgElems}
+                    <MsgTextArea msgInputValue={props.state.msgInputValue} dispatch={props.dispatch}/>
                 </div>
 
             </div>

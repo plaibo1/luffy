@@ -10,6 +10,7 @@ const PostsWall = (props) => {
                 message={post.msg}
                 likesCounter={post.likesCounter}
                 img={post.img}
+                dispatch={props.dispatch}
             />
         )
     })

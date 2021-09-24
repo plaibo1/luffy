@@ -1,6 +1,14 @@
+import React from 'react'
 import s from './post.module.sass'
 
 const Post = (props) => {
+
+    const like = React.createRef()
+  
+    const likeUp = () => {
+        props.dispatch({type: 'POST-LIKE-UP'})
+    }
+
     return (
 
         <div className={s.post}>
@@ -11,7 +19,7 @@ const Post = (props) => {
                {props.message}
             </div>
 
-            <div className={s.post__likes}>🖤 {props.likesCounter}</div>
+            <div className={s.post__likes} onClick={likeUp} ref={like}>🖤 {props.likesCounter}</div>
         </div>
 
     )
