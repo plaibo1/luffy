@@ -25,17 +25,23 @@ const dialogPageReducer = (state = initialState, action) => {
     switch(action.type) {
         case ADD_MSG:
             if (state.msgInputValue === '') return state
+            
             let newMsg = {
                 id: 5, 
-                msg: state.msgInputValue
+                msg: [...state.msgInputValue]
             }
-            state.msgData.push(newMsg)
-            state.msgInputValue = '';
-            return state
+
+            return {
+                ...state,
+                msgData: [...state.msgData, newMsg],
+                msgInputValue: ''
+            }
 
         case UPDATE_MSG_TEXT_ON_CHANGE:
-            state.msgInputValue = action.txt;
-            return state
+            return {
+                ...state,
+                msgInputValue: action.txt
+            }
 
         default:
             return state;

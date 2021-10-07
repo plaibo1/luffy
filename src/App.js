@@ -1,10 +1,12 @@
 import React from 'react';
 import './App.sass';
 import Navbar from './components/Navbar/Navbar';
-import Home from './components/Home/Home';
 import { BrowserRouter, Route } from 'react-router-dom'
-import Dialogs from './components/Dialogs/Dialogs';
-import MusicPage from './components/MusicPage/MusicPage';
+
+import HomeContainer from './components/Home/HomeContainer';
+import DialogsContainer from './components/Dialogs/DialogsContainer';
+import MusicPageContainer from './components/MusicPage/MusicPageContainer';
+import UsersPageContainer from './components/UsersPage/UserPageContainer';
 
 function App(props) {
 
@@ -16,18 +18,15 @@ function App(props) {
         <div className="pageContainer">
 
             <Route path='/home' 
-                render={() => <Home state={props.state.homePage} 
-                                    dispatch={props.dispatch}
-                        />}/>
-
-            <Route path='/dialogs' render={()=> <Dialogs 
-                  state={props.state.dialogPage}
-                  dispatch={props.dispatch}
-                />}
+                render={() => <HomeContainer />}
             />
 
-            <Route path='/music' render={ () => <MusicPage 
-            state={props.state.musicPage} />} />
+            <Route path='/dialogs' render={()=> <DialogsContainer />}
+            />
+
+            <Route path='/users' render={ () => <UsersPageContainer/>} />
+
+            <Route path='/music' render={ () => <MusicPageContainer />} />
 
         </div>
       </BrowserRouter>

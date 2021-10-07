@@ -1,19 +1,18 @@
-import { addMsgCreator, updateMsgOnChangeCreator } from '../../../../Redux/dialogPage-reducer';
 import s from '../../dialogs.module.sass';
 
 const MsgTextArea = (props) => {
 
-    const sendMsg = () => props.dispatch(addMsgCreator());
+    const onSendMsg = () => props.sendMsg();
 
-    const onMsgChange = (e) => {
+    const updateOnMsgChange = (e) => {
         let text = e.target.value;
-        props.dispatch(updateMsgOnChangeCreator(text))
+        props.onMsgChange(text)
     }
     
     return (
         <div className={s.msgTextarea}>
-            <textarea onChange={onMsgChange} value={props.msgInputValue}></textarea>
-            <button onClick={sendMsg}>Send</button>
+            <textarea onChange={updateOnMsgChange} value={props.msgInputValue}></textarea>
+            <button onClick={onSendMsg}>Send</button>
         </div>
     )
 }

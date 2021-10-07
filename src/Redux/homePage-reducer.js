@@ -1,3 +1,5 @@
+import { Provider } from "react-redux";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_POST_ON_CHANGE = 'UPDATE-POST-ON-CHANGE';
 const POST_LIKE_UP = 'POST-LIKE-UP';
@@ -25,7 +27,7 @@ let initialState = {
 const homePageReducer = (state = initialState, action) => {
 
     switch(action.type){
-        case ADD_POST:
+        case ADD_POST: {
             if (state.textareaValue === '') return state;
     
             let newPost = {
@@ -33,18 +35,30 @@ const homePageReducer = (state = initialState, action) => {
                 msg: state.textareaValue,
                 likesCounter: 0
             };
-        
-            state.postData.push(newPost)
-            state.textareaValue = ''
-            return state;
 
-        case UPDATE_POST_ON_CHANGE:
-            state.textareaValue = action.txt;
-            return state;
+            return {
+                ...state,
+                postData: [...state.postData, newPost],
+                textareaValue: ''
+            }
+
+        }
+
+        case UPDATE_POST_ON_CHANGE: {
+            return {
+                ...state,
+                textareaValue: action.txt
+            }
+        }
+            
         
-        case POST_LIKE_UP:
-            state.postData[2].likesCounter++
-            return state;
+        case POST_LIKE_UP: {
+            let copyState = {...state}
+            copyState.postData = [...state.postData]
+            copyState.postData[2].likesCounter++
+            return copyState;
+        }
+            
 
         default:
             return state;
@@ -57,5 +71,7 @@ export const addPostActionCreator = () => ({type: ADD_POST})
 export const updatePostOnChangeActionCreator = (text) => (
   {type: UPDATE_POST_ON_CHANGE, txt:text}
 )
+
+export const likeUpActionCreator = () => ({type: 'POST-LIKE-UP'})
 
 export default homePageReducer;

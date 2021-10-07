@@ -1,11 +1,9 @@
 import s from './music.module.sass'
 
+
 const MusicPage = (props) => {
 
-
-
-  let musicData = props.state.musicData.map( (m) => {
-      
+  let musicData = props.musicData.map( (m) => {
     return (
         <div className={s.musicCard}>
             <div className={s.musicCard__img}>
@@ -18,13 +16,14 @@ const MusicPage = (props) => {
         </div>
     )
   })
-
-  return (
-      <div className={s.musicPage}>
-          <h2>Music Page</h2>
-          {musicData}
-      </div>
-  )   
+    
+    return (
+        <div className={s.musicPage}>
+            <h2>Music Page</h2>
+            {musicData}
+        </div>
+    )
+    
 }
 
 export default MusicPage;

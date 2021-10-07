@@ -5,8 +5,8 @@ const Post = (props) => {
 
     const like = React.createRef()
   
-    const likeUp = () => {
-        props.dispatch({type: 'POST-LIKE-UP'})
+    const onLikeUp = () => {
+        props.likeUp()
     }
 
     return (
@@ -19,7 +19,7 @@ const Post = (props) => {
                {props.message}
             </div>
 
-            <div className={s.post__likes} onClick={likeUp} ref={like}>🖤 {props.likesCounter}</div>
+            <div className={s.post__likes} onClick={onLikeUp} ref={like}>🖤 {props.likesCounter}</div>
         </div>
 
     )
