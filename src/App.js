@@ -7,6 +7,8 @@ import HomeContainer from './components/Home/HomeContainer';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import MusicPageContainer from './components/MusicPage/MusicPageContainer';
 import UsersPageContainer from './components/UsersPage/UserPageContainer';
+import TestPageContainer from './components/TestPage/TestPageContainer';
+import Login from './components/LoginPage/Login';
 
 function App(props) {
 
@@ -17,7 +19,7 @@ function App(props) {
       <Navbar />
         <div className="pageContainer">
 
-            <Route path='/home' 
+            <Route path='/home/:userId?' 
                 render={() => <HomeContainer />}
             />
 
@@ -27,6 +29,10 @@ function App(props) {
             <Route path='/users' render={ () => <UsersPageContainer/>} />
 
             <Route path='/music' render={ () => <MusicPageContainer />} />
+
+            <Route path='/testpage' render={ () => <TestPageContainer/>} />
+
+            <Route path='/login' render={ () => <Login /> } />
 
         </div>
       </BrowserRouter>

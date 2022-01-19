@@ -7,12 +7,11 @@ import MsgTextArea from './Message/MsgTextarea/MsgTextarea'
 const Dialogs = (props) => {
     
     let dialogElems = props.dialogsData.map((dialog) => {
-        return <DialogItem id={dialog.id} name={dialog.name} />
+        return <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
     })
 
-
     let msgElems = props.msgData.map((msg) => (
-        <Message id={msg.id} msg={msg.msg} />
+        <Message key={msg.id} id={msg.id} msg={msg.msg} />
     ))
 
     return(

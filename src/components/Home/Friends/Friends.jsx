@@ -7,7 +7,7 @@ const Frineds = (props) => {
 
     const friendList = props.friends.map((f) => {
         return (
-            <NavLink to={`/home/frineds/${f.id}`} className={s.friend}>
+            <NavLink to={`/home/frineds/${f.id}`} key={f.id} className={s.friend}>
                 <div className={s.friend__img}> <img src={f.avatar} alt="img" /> </div>
                 <div className={s.friend__name}> {f.name} </div>
             </NavLink>

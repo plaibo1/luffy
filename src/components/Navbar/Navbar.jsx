@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import AuthFaceContainer from '../common/AuthFace/AuthFaceContainer';
 import s from "./navbar.module.sass"
 
 const Navbar = () => {
@@ -23,7 +24,12 @@ const Navbar = () => {
                 <li className={s.nav__list__item}>
                     <NavLink to='/music' activeClassName={s.active}>Music</NavLink>
                 </li>
+                <li className={s.nav__list__item}>
+                    <NavLink to='/testpage' activeClassName={s.active}>TestPage</NavLink>
+                </li>
             </ul>
+
+            <AuthFaceContainer />
 
         </nav>
     )

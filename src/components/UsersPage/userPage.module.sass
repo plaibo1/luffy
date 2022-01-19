@@ -9,12 +9,8 @@
 .user
     position: relative
     padding: 10px
-    &__img
-        width: 50px
-        height: 50px
-        position: relative
-        img
-            width: 100%
+    display: flex
+    align-items: center
     &__name
         color: #4632fc
         font-size: 20px
@@ -23,5 +19,47 @@
         color: #686868
     &__city
         position: absolute
-        background-color: #4632fc
+        background-color: #0b24ff
         color: #fff
+    &__avatar
+        width: 70px
+        height: 70px
+        position: relative
+        display: flex
+        align-items: center
+        justify-content: center
+        overflow: hidden
+        border-radius: 5px
+        margin-right: 24px
+        img
+            width: 140%
+    &__button button
+        padding: 5px 10px
+        background-color: #0b24ff
+        margin-left: 20px
+        color: #fff
+        &:disabled
+            background-color: #d123c3
+
+
+
+.pagination
+    span
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        background-color: #23e45d
+        margin: 5px
+        cursor: pointer
+        transition: transform .3s ease
+        width: 20px
+        height: 20px
+        border-radius: 3px
+        &:hover
+            background-color: #0b24ff
+            color: #fff
+            transform: scale(1.4)
+.selectedActive
+    font-weight: bold
+    background-color: #0b24ff !important
+    color: #fff

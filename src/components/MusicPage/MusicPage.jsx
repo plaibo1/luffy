@@ -5,7 +5,7 @@ const MusicPage = (props) => {
 
   let musicData = props.musicData.map( (m) => {
     return (
-        <div className={s.musicCard}>
+        <div className={s.musicCard} key={m.id}>
             <div className={s.musicCard__img}>
                 <img src={m.img} alt="img" />
             </div>

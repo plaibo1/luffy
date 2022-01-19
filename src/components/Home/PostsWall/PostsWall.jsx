@@ -6,11 +6,15 @@ const PostsWall = (props) => {
     let posts = props.postData.map((post) => {
         return (
             <Post
+                key={post.id}
                 id={post.id}
                 message={post.msg}
                 likesCounter={post.likesCounter}
                 img={post.img}
                 likeUp={props.likeUp}
+                postComments={props.postComments}
+                updateCommentOnChange={props.updateCommentOnChange}
+                commentTextareaValue={props.commentTextareaValue}
             />
         )
     })
