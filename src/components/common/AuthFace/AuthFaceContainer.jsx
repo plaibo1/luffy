@@ -1,13 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { authApiRequest } from '../../../Redux/auth-reducer'
 import AuthFace from './AuthFace';
-
+import {logout} from '../../../Redux/auth-reducer'
 class AuthFaceWrapper extends React.Component {
-
-    componentDidMount() {
-        this.props.authApiRequest()
-    }
 
     render() {
         return (
@@ -30,7 +25,7 @@ const MapStateToProps = (state) => {
 }
 
 const AuthFaceContainer = connect(MapStateToProps, {
-   authApiRequest
+ logout
 })(AuthFaceWrapper)
 
 export default AuthFaceContainer;

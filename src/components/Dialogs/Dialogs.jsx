@@ -1,7 +1,7 @@
 import s from './dialogs.module.sass'
+import DialogsForm from './DialogsForm'
 import DialogItem from './DialogsItem/DialogsItem'
 import Message from './Message/Message'
-import MsgTextArea from './Message/MsgTextarea/MsgTextarea'
 
 
 const Dialogs = (props) => {
@@ -26,11 +26,9 @@ const Dialogs = (props) => {
 
                 <div className="messages">
                     {msgElems}
-                    <MsgTextArea 
-                        msgInputValue={props.msgInputValue} 
-                        onMsgChange={props.onMsgChange}
-                        sendMsg={props.sendMsg}
-                    />
+
+                    <DialogsForm sendMsg={props.sendMsg}/>
+
                 </div>
 
             </div>

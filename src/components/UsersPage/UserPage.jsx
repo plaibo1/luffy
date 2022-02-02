@@ -1,7 +1,6 @@
 import s from './userPage.module.sass';
 import ava from '../../img/ava.png';
 import { NavLink } from 'react-router-dom';
-import axios from 'axios';
 
 const UserPage = (props) => {
 

@@ -12,9 +12,6 @@ const PostsWall = (props) => {
                 likesCounter={post.likesCounter}
                 img={post.img}
                 likeUp={props.likeUp}
-                postComments={props.postComments}
-                updateCommentOnChange={props.updateCommentOnChange}
-                commentTextareaValue={props.commentTextareaValue}
             />
         )
     })

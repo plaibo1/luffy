@@ -54,7 +54,7 @@ const userPageReducer = (state = initialState, action) => {
             return {
                 ...state, followingInProcess: action.toggle
                 ? [...state.followingInProcess, action.userId]
-                : state.followingInProcess.filter(id => id != action.userId)
+                : state.followingInProcess.filter(id => id !== action.userId)
             }
         }
 
@@ -82,7 +82,7 @@ export const getUsers = (currentPage, pageSize) => {
         UsersAPI.getUsers(currentPage, pageSize)
             .then(res => {
                 dispatch(setUsers(res.items))
-                dispatch(setUsersTotalCount(200))
+                dispatch(setUsersTotalCount(700))
                 dispatch(toggleIsFetching(false))
             })
     }

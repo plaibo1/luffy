@@ -1,11 +1,10 @@
 
-import { UsersAPI } from "../api/api";
+import { HomeApi } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_POST_ON_CHANGE = 'UPDATE-POST-ON-CHANGE';
 const POST_LIKE_UP = 'POST-LIKE-UP';
-const UPDATE_COMMENT_ON_CHANGE = 'UPDATE_COMMENT_ON_CHANGE';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
+const SET_STATUS = 'SET_STATUS';
 
 
 let initialState = {
@@ -15,8 +14,6 @@ let initialState = {
         {id: 3, msg: "Hello world3", likesCounter: 122},
         {id: 4, msg: "Hello world4", likesCounter: 142255},
       ],
-
-    textareaValue: '',
 
     friends: [
       {id: 1, name: 'Sereja 😎', avatar: 'https://sun9-15.userapi.com/impg/1q_SgUgrCPro-tyluyUd28NrTC48wu_8GVPs_A/m-uzaR8RmGM.jpg?size=1623x2160&quality=96&sign=d9a31dcd853a93df2c647453c67dd27e&type=album'},
@@ -28,14 +25,9 @@ let initialState = {
       {id: 7, name: 'Jaly (Jell)', avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSZsqA1ZNIF_p454AqcE4Zs0mTGBVjYMoeTA&usqp=CAU'},
     ],
 
-    postComments: [
-        {id: 1, name: 'Alex', comment: 'hello its my first comment'},
-        {id: 2, name: 'Andrew', comment: 'Just for fun'}
-    ],
+    userProfile: null,
 
-    commentTextareaValue: '',
-
-    userProfile: null
+    status: '',
 
 }
 
@@ -47,14 +39,13 @@ const homePageReducer = (state = initialState, action) => {
     
             let newPost = {
                 id: 5,
-                msg: state.textareaValue,
+                msg: action.postText,
                 likesCounter: 0
             };
 
             return {
                 ...state,
                 postData: [...state.postData, newPost],
-                textareaValue: ''
             }
 
         }
@@ -66,27 +57,19 @@ const homePageReducer = (state = initialState, action) => {
             }
         }
         
-        case UPDATE_POST_ON_CHANGE: {
-            return {
-                ...state,
-                textareaValue: action.txt
-            }
-        }
-        
         case POST_LIKE_UP: {
             let copyState = {...state}
             copyState.postData = [...state.postData]
-            copyState.postData[2].likesCounter++
+            copyState.postData[action.postId].likesCounter++
             return copyState;
         }
 
-        case UPDATE_COMMENT_ON_CHANGE: {
+        case SET_STATUS: {
             return {
                 ...state,
-                commentTextareaValue: action.txt
+                status: action.status
             }
         }
-            
 
         default:
             return state;
@@ -96,21 +79,18 @@ const homePageReducer = (state = initialState, action) => {
 
 export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
-export const addPost = () => ({type: ADD_POST})
+export const addPost = (postText) => ({type: ADD_POST, postText})
 
-export const updatePostOnChange = (text) => (
-  {type: UPDATE_POST_ON_CHANGE, txt:text}
-)
 
-export const updateCommentOnChange = (text) => (
-    {type: UPDATE_COMMENT_ON_CHANGE, txt:text}
+export const setStatus = (status) => (
+    {type: SET_STATUS, status}
 )
 
 export const getProfile = (userId) => {
     return (dispatch) => {
 
-        const userIdInit = userId ?? 21365
-        UsersAPI.getProfile(userIdInit)
+        // const userIdInit = userId ?? 21365
+        HomeApi.getProfile(userId)
         .then(data => {
             dispatch(setUserProfile(data))
         })
@@ -118,8 +98,29 @@ export const getProfile = (userId) => {
     }
 }
 
+export const getStatus = (userId) => {
+    return (dispatch) => {
+        const userIdInit = userId ?? 21365
+        HomeApi.getStatus(userIdInit)
+        .then(data => {
+            dispatch(setStatus(data))
+        })
+    }
+}
+
+export const updateStatus = (status) => {
+    return (dispatch) => {
+        HomeApi.updateStatus(status)
+        .then(res => {
+            if (res.data.resultCode === 0) {
+                dispatch(setStatus(status))
+            }
+        })
+    }
+}
 
 
-export const likeUp = () => ({type: 'POST-LIKE-UP'})
+
+export const likeUp = (postId) => ({type: 'POST-LIKE-UP', postId})
 
 export default homePageReducer;

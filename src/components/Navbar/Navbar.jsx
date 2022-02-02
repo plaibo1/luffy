@@ -21,12 +21,6 @@ const Navbar = () => {
                 <li className={`${s.nav__list__item} ${s.test}`}>
                     <NavLink to='/users' activeClassName={s.active}>Users</NavLink>
                 </li>
-                <li className={s.nav__list__item}>
-                    <NavLink to='/music' activeClassName={s.active}>Music</NavLink>
-                </li>
-                <li className={s.nav__list__item}>
-                    <NavLink to='/testpage' activeClassName={s.active}>TestPage</NavLink>
-                </li>
             </ul>
 
             <AuthFaceContainer />

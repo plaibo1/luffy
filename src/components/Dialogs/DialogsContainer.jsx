@@ -1,9 +1,11 @@
 import Dialogs from './Dialogs'
-import { addMsgCreator, updateMsgOnChangeCreator } from '../../Redux/dialogPage-reducer';
+import { addMsgCreator } from '../../Redux/dialogPage-reducer';
 import { connect } from 'react-redux';
 import React from 'react';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
+
+
 
 
 class DialogContainer extends React.Component {
@@ -21,18 +23,14 @@ class DialogContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         dialogsData: state.dialogPage.dialogsData,
-        msgData: state.dialogPage.msgData,
-        msgInputValue: state.dialogPage.msgInputValue,
+        msgData: state.dialogPage.msgData
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        sendMsg: () => {
-            dispatch(addMsgCreator())
-        },
-        onMsgChange: (text) => {
-            dispatch(updateMsgOnChangeCreator(text))
+        sendMsg: (msg) => {
+            dispatch(addMsgCreator(msg))
         }
     }
 }

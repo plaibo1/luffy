@@ -3,19 +3,33 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
-import { addPost, likeUp, updateCommentOnChange, updatePostOnChange, setUserProfile, getProfile } from '../../Redux/homePage-reducer';
+import { addPost, likeUp, 
+    setUserProfile, getProfile, getStatus, updateStatus} from '../../Redux/homePage-reducer';
 import Home from './Home.jsx';
 
 
 class HomeContainer extends React.Component {
     componentDidMount() {
-        this.props.getProfile(this.props.match.params.userId);
+        
+        console.log(this.props.history)
+
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = this.props.userId
+            if(!userId) {
+                this.props.history.push('/login')
+            }
+        }
+
+        this.props.getProfile(userId);
+        this.props.getStatus(userId);
     }
 
 
     render() {
         return(
-            <Home {...this.props} userProfile={this.props.userProfile}/>
+            <Home {...this.props} userProfile={this.props.userProfile} 
+                getStatus={this.props.getStatus} updateStatus={this.props.updateStatus}  />
         )
     }
 
@@ -29,6 +43,8 @@ const mapStateToProps = (state) => {
         postComments: state.homePage.postComments,
         commentTextareaValue: state.homePage.commentTextareaValue,
         userProfile: state.homePage.userProfile,
+        status: state.homePage.status,
+        userId: state.auth.userId
     }
 }
 
@@ -37,8 +53,9 @@ const mapStateToProps = (state) => {
 
 export default compose(
     connect(mapStateToProps, {
-        addPost, updatePostOnChange, likeUp, updateCommentOnChange, setUserProfile, getProfile  
+        addPost, likeUp, 
+        setUserProfile, getProfile, getStatus, updateStatus
     }),
     withRouter,
-    withAuthRedirect
+    // withAuthRedirect
 )(HomeContainer)

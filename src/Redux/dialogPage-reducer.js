@@ -1,5 +1,4 @@
 const ADD_MSG = 'ADD-MSG'
-const UPDATE_MSG_TEXT_ON_CHANGE = 'UPDATE-MSG-TEXT-ON-CHANGE'
 
 let initialState = {
     dialogsData: [
@@ -12,47 +11,36 @@ let initialState = {
       ],
 
     msgData: [
-        {id: 1, msg: 'What did u tal about?'},
-        {id: 2, msg: 'What did u tal about?'},
-        {id: 3, msg: 'What did u tal about?'},
-        {id: 4, msg: 'What did u tal about?'},
-      ],
-    msgInputValue: ''
+        {id: 1, msg: 'What do u think about it?'},
+        {id: 2, msg: 'What do u think about it?'},
+        {id: 3, msg: 'What do u think about it?'},
+        {id: 4, msg: 'What do u think about it?'},
+        {id: 5, msg: 'What do u think about it?'},
+      ]
 }
 
 const dialogPageReducer = (state = initialState, action) => {
 
     switch(action.type) {
         case ADD_MSG:
-            if (state.msgInputValue === '') return state
-            
+
             let newMsg = {
-                id: 5, 
-                msg: [...state.msgInputValue]
+                id: 6,
+                msg: action.msg
             }
 
             return {
                 ...state,
-                msgData: [...state.msgData, newMsg],
-                msgInputValue: ''
-            }
-
-        case UPDATE_MSG_TEXT_ON_CHANGE:
-            return {
-                ...state,
-                msgInputValue: action.txt
+                msgData: [...state.msgData, newMsg]
             }
 
         default:
             return state;
     }
-} 
+}
 
-export const addMsgCreator = () => ({type: ADD_MSG})
+export const addMsgCreator = (msg) => ({type: ADD_MSG, msg})
 
-export const updateMsgOnChangeCreator = (text) => (
-  {type: UPDATE_MSG_TEXT_ON_CHANGE, txt:text}
-)
 
 
 export default dialogPageReducer;
