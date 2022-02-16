@@ -1,0 +1,42 @@
+.pagination
+    span
+        display: inline-flex
+        align-items: center
+        justify-content: center
+        background-color: #23e45d
+        margin: 5px
+        cursor: pointer
+        transition: transform .3s ease
+        width: 41px
+        height: 41px
+        border-radius: 3px
+        font-size: 15px
+        &:hover
+            background-color: #0b24ff
+            color: #fff
+            transform: scale(1.4)
+    &__button
+        width: 41px
+        height: 41px
+        border: 2px solid #0b24ff
+        background-color: #fff
+        border-radius: 3px
+        cursor: pointer
+        color: #0b24ff
+        display: inline-flex
+        align-items: center
+        &:disabled
+            border: 2px solid #cbd0fd
+            color: #cbd0fd
+            &:hover
+                background-color: #cbd0fd
+        &:hover
+            background-color: #0b24ff
+            color: #fff
+        &:active
+            transform: scale(0.9)
+        
+.selectedActive
+    font-weight: bold
+    background-color: #0b24ff !important
+    color: #fff

@@ -1,4 +1,4 @@
-const ADD_MSG = 'ADD-MSG'
+const ADD_MSG = 'luffy/dialogPage/ADD-MSG'
 
 let initialState = {
     dialogsData: [

@@ -9,9 +9,6 @@ import { compose } from 'redux';
 
 
 class DialogContainer extends React.Component {
-    componentDidMount() {
-
-    }
 
     render() {
         return (

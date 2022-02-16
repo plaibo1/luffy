@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { addPost, likeUp, 
     setUserProfile, getProfile, getStatus, updateStatus} from '../../Redux/homePage-reducer';
 import Home from './Home.jsx';
@@ -10,8 +9,6 @@ import Home from './Home.jsx';
 
 class HomeContainer extends React.Component {
     componentDidMount() {
-        
-        console.log(this.props.history)
 
         let userId = this.props.match.params.userId;
         if (!userId) {
@@ -56,6 +53,5 @@ export default compose(
         addPost, likeUp, 
         setUserProfile, getProfile, getStatus, updateStatus
     }),
-    withRouter,
-    // withAuthRedirect
+    withRouter
 )(HomeContainer)

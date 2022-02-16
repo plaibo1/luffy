@@ -1,7 +1,7 @@
 import { stopSubmit } from "redux-form";
-import { AuthApi, UsersAPI } from "../api/api";
+import { AuthApi } from "../api/api";
 
-const SET_USER_AUTH = 'SET_USER_AUTH'
+const SET_USER_AUTH = 'luffy/auth/SET_USER_AUTH'
 
 let initialState = {
     userId: null,
@@ -30,7 +30,7 @@ export const setUserAuthData = (userId, email, login, isAuthorized) =>
 
 export const authApiRequest = () => {
     return (dispatch) => {
-       return UsersAPI.getAuthMe()
+       return AuthApi.getAuthMe()
         .then(data => {
             if (data.resultCode === 0) {
                 const {id, email, login} = data.data

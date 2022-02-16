@@ -1,18 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
-import store from './Redux/redux-store';
-import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
+import LuffyApp from './App';
 
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <LuffyApp />,
     document.getElementById('root')
 );
 
-
-reportWebVitals();

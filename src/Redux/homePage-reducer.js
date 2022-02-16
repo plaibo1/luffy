@@ -1,10 +1,10 @@
 
 import { HomeApi } from "../api/api";
 
-const ADD_POST = 'ADD-POST';
-const POST_LIKE_UP = 'POST-LIKE-UP';
-const SET_USER_PROFILE = 'SET_USER_PROFILE';
-const SET_STATUS = 'SET_STATUS';
+const ADD_POST = 'luffy/homePage/ADD-POST';
+const POST_LIKE_UP = 'luffy/homePage/POST-LIKE-UP';
+const SET_USER_PROFILE = 'luffy/homePage/SET_USER_PROFILE';
+const SET_STATUS = 'luffy/homePage/SET_STATUS';
 
 
 let initialState = {
@@ -87,35 +87,29 @@ export const setStatus = (status) => (
 )
 
 export const getProfile = (userId) => {
-    return (dispatch) => {
-
-        // const userIdInit = userId ?? 21365
-        HomeApi.getProfile(userId)
-        .then(data => {
-            dispatch(setUserProfile(data))
-        })
-
+    return async (dispatch) => {
+        const data = await HomeApi.getProfile(userId)
+        dispatch(setUserProfile(data))
     }
 }
 
 export const getStatus = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         const userIdInit = userId ?? 21365
-        HomeApi.getStatus(userIdInit)
-        .then(data => {
-            dispatch(setStatus(data))
-        })
+        const data = await HomeApi.getStatus(userIdInit);
+
+        dispatch(setStatus(data))
     }
 }
 
 export const updateStatus = (status) => {
-    return (dispatch) => {
-        HomeApi.updateStatus(status)
-        .then(res => {
-            if (res.data.resultCode === 0) {
-                dispatch(setStatus(status))
-            }
-        })
+    return async (dispatch) => {
+        const res = await HomeApi.updateStatus(status)
+
+        if (res.data.resultCode === 0) {
+            dispatch(setStatus(status))
+        }
+
     }
 }
 

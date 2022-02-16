@@ -1,10 +1,5 @@
 .userWrapper
     width: 100%
-    background-color: #acd123
-    display: flex
-    justify-content: center
-    align-items: center
-    flex-direction: column
 
 .user
     position: relative
@@ -17,6 +12,7 @@
         font-weight: bold
     &__status
         color: #686868
+        width: 300px
     &__city
         position: absolute
         background-color: #0b24ff
@@ -40,26 +36,3 @@
         color: #fff
         &:disabled
             background-color: #d123c3
-
-
-
-.pagination
-    span
-        display: inline-flex
-        align-items: center
-        justify-content: center
-        background-color: #23e45d
-        margin: 5px
-        cursor: pointer
-        transition: transform .3s ease
-        width: 20px
-        height: 20px
-        border-radius: 3px
-        &:hover
-            background-color: #0b24ff
-            color: #fff
-            transform: scale(1.4)
-.selectedActive
-    font-weight: bold
-    background-color: #0b24ff !important
-    color: #fff

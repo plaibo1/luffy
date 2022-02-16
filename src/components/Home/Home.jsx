@@ -1,11 +1,9 @@
 import React from 'react'
-import Post from './PostsWall/PostsWall.jsx';
 import s from './home.module.sass'
-import Friends from './Friends/Friends.jsx';
 import Preloader from '../common/Preloader/Preloader.jsx';
 import ava from '../../img/ava.png'
-import HomeStatus from './HomeStatus.jsx';
-import HomeForm from './HomeForm/HomeForm.jsx';
+import HomeStatusWithHooks from './HomeStatusWithHooks.jsx';
+import HomeContent from './HomeContent.jsx';
 
 const Home = (props) => {
 
@@ -28,30 +26,19 @@ const Home = (props) => {
                 <span className={s.Home__userData__about}><span>AboutMe:</span> {props.userProfile.aboutMe}</span>
                 <span className={s.Home__userData__status}>
                     <span>status</span>
-                    <HomeStatus status={props.status} updateStatus={props.updateStatus}/>
+                    <HomeStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
                 </span>
             </div>
 
             <div className={s['Home-content']}>
 
-                <div className={s.Home__friends}>
-                    <h2 className={s.friendWrapper__heading}>Friends</h2>
-                    <Friends friends={props.friends}/>
-                </div>
-
-                <div className={s.Home__wall}>
-
-                    <div className={s.Home__wall__form}>
-                        <HomeForm addPost={props.addPost} />
-                    </div>
-
-                    <Post 
-                        postData={props.postData} 
-                        likeUp={props.likeUp} 
-                        postComments={props.postComments}
-                    />
-
-                </div>
+                <HomeContent 
+                    friends={props.friends}
+                    addPost={props.addPost}
+                    postData={props.postData}
+                    likeUp={props.likeUp}
+                    postComments={props.postComments}
+                />
 
             </div>
 
