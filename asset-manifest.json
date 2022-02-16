@@ -1,0 +1,31 @@
+{
+  "files": {
+    "main.css": "/luffy/static/css/main.c52ce970.chunk.css",
+    "main.js": "/luffy/static/js/main.b00399f8.chunk.js",
+    "main.js.map": "/luffy/static/js/main.b00399f8.chunk.js.map",
+    "runtime-main.js": "/luffy/static/js/runtime-main.b291ab85.js",
+    "runtime-main.js.map": "/luffy/static/js/runtime-main.b291ab85.js.map",
+    "static/js/2.4b9599c1.chunk.js": "/luffy/static/js/2.4b9599c1.chunk.js",
+    "static/js/2.4b9599c1.chunk.js.map": "/luffy/static/js/2.4b9599c1.chunk.js.map",
+    "static/css/3.f4262022.chunk.css": "/luffy/static/css/3.f4262022.chunk.css",
+    "static/js/3.28a9013e.chunk.js": "/luffy/static/js/3.28a9013e.chunk.js",
+    "static/js/3.28a9013e.chunk.js.map": "/luffy/static/js/3.28a9013e.chunk.js.map",
+    "static/css/4.6a29d123.chunk.css": "/luffy/static/css/4.6a29d123.chunk.css",
+    "static/js/4.000a7940.chunk.js": "/luffy/static/js/4.000a7940.chunk.js",
+    "static/js/4.000a7940.chunk.js.map": "/luffy/static/js/4.000a7940.chunk.js.map",
+    "static/js/5.27ed243c.chunk.js": "/luffy/static/js/5.27ed243c.chunk.js",
+    "static/js/5.27ed243c.chunk.js.map": "/luffy/static/js/5.27ed243c.chunk.js.map",
+    "index.html": "/luffy/index.html",
+    "static/css/3.f4262022.chunk.css.map": "/luffy/static/css/3.f4262022.chunk.css.map",
+    "static/css/4.6a29d123.chunk.css.map": "/luffy/static/css/4.6a29d123.chunk.css.map",
+    "static/css/main.c52ce970.chunk.css.map": "/luffy/static/css/main.c52ce970.chunk.css.map",
+    "static/js/2.4b9599c1.chunk.js.LICENSE.txt": "/luffy/static/js/2.4b9599c1.chunk.js.LICENSE.txt",
+    "static/media/ava.png": "/luffy/static/media/ava.bb9fb897.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b291ab85.js",
+    "static/js/2.4b9599c1.chunk.js",
+    "static/css/main.c52ce970.chunk.css",
+    "static/js/main.b00399f8.chunk.js"
+  ]
+}
