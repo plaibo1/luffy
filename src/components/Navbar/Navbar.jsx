@@ -2,13 +2,15 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import AuthFaceContainer from '../common/AuthFace/AuthFaceContainer';
 import s from "./navbar.module.sass"
+// import logo from '../../img/logo.svg'
+import logo from '../../img/logo.png'
 
 const Navbar = () => {
     return (
         <nav className={s.nav}>
 
             <div className={s.nav__logo}>
-                <img src="https://image.flaticon.com/icons/png/512/3845/3845871.png" alt="img" />
+                <img src={logo} alt="img" />
             </div>
 
             <ul className={s.nav__list}>

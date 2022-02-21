@@ -47,7 +47,7 @@ export const login = (email, password, rememberMe) => dispatch => {
                 dispatch(authApiRequest())
             } else {
                 const msg = res.data.messages.length > 0 ? res.data.messages[0] : 'some error'
-                dispatch(stopSubmit("login", {_error: msg}))
+                dispatch(stopSubmit("login", { _error: msg }))
             }
         })
 }

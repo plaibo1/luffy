@@ -60,6 +60,23 @@ export const HomeApi = {
 
     updateStatus(status) {
         return instance.put('/profile/status', {status: status})
+    },
+
+    updateUserPhoto(photos) {
+
+        const formData = new FormData();
+        formData.append("image", photos);
+
+        const config = { headers: { 'Content-Type': 'multipart/form-data' } }
+
+        return instance.put('/profile/photo', formData, config)
+            .then(res => res.data);
+
+    },
+
+    saveProfile(profile) {
+        return instance.put('/profile', profile)
+            .then(res => res.data)
     }
 
 }

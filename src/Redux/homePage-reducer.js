@@ -1,10 +1,11 @@
-
 import { HomeApi } from "../api/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = 'luffy/homePage/ADD-POST';
 const POST_LIKE_UP = 'luffy/homePage/POST-LIKE-UP';
 const SET_USER_PROFILE = 'luffy/homePage/SET_USER_PROFILE';
 const SET_STATUS = 'luffy/homePage/SET_STATUS';
+const SET_USER_AVATAR = 'luffy/homePage/SET_USER_AVATAR';
 
 
 let initialState = {
@@ -71,6 +72,13 @@ const homePageReducer = (state = initialState, action) => {
             }
         }
 
+        case SET_USER_AVATAR: {
+            return {
+                ...state,
+                userProfile: {...state.userProfile, photos: action.photos}
+            }
+        }
+
         default:
             return state;
     }
@@ -81,6 +89,7 @@ export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
 
 export const addPost = (postText) => ({type: ADD_POST, postText})
 
+export const setUserAva = (photos) => ({type: SET_USER_AVATAR, photos})
 
 export const setStatus = (status) => (
     {type: SET_STATUS, status}
@@ -108,6 +117,38 @@ export const updateStatus = (status) => {
 
         if (res.data.resultCode === 0) {
             dispatch(setStatus(status))
+        }
+
+    }
+}
+
+
+export const updatePhoto = (photos) => {
+    return async (dispatch) => {
+        const res = await HomeApi.updateUserPhoto(photos)
+
+        if (res.resultCode === 0) {
+            dispatch(setUserAva(res.data.photos))
+        }
+
+    }
+}
+
+
+export const updateProfile = (profile) => {
+    return async (dispatch, getState) => {
+
+        const userId = getState().auth.userId;
+
+        const res = await HomeApi.saveProfile(profile)
+
+        if (res.resultCode === 0) {
+            dispatch(getProfile(userId))
+        } else {
+            const msg = res.messages.length > 0 ? res.messages[0] : 'some error'
+            dispatch(stopSubmit( "editProfile", { _error: msg }))
+            
+            return Promise.reject(msg);
         }
 
     }

@@ -19,6 +19,16 @@ const Pagination = ({totalPageCount, pageSize, currentPage, onPageChanged,
     let leftPortionSize = (portionNumber - 1) * portionSize + 1;
     let rightPortionSize = portionNumber * portionSize;
 
+    const onClickPrev = () => {
+        setPortionNumber(portionNumber - 1)
+        saveCurPagination(portionNumber - 1)
+    }
+
+    const onClickNext = () => {
+        setPortionNumber(portionNumber + 1)
+        saveCurPagination(portionNumber + 1)
+    }
+
     return (
         
         <div className={s.pagination}>
@@ -26,7 +36,7 @@ const Pagination = ({totalPageCount, pageSize, currentPage, onPageChanged,
             <button
                 className={s.pagination__button}
                 disabled={ portionNumber > 1 ? false : true}
-                onClick={ () => {setPortionNumber(portionNumber - 1); saveCurPagination(portionNumber);}}>prev</button>
+                onClick={onClickPrev}>prev</button>
 
             {
                 pages
@@ -43,7 +53,7 @@ const Pagination = ({totalPageCount, pageSize, currentPage, onPageChanged,
             <button
                 className={s.pagination__button}
                 disabled={portionCount > portionNumber ? false : true}
-                onClick={ () => {setPortionNumber(portionNumber + 1); saveCurPagination(portionNumber);}}>next</button>
+                onClick={onClickNext}>next</button>
      
         </div>
     )

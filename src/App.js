@@ -61,7 +61,7 @@ const AppContainer = connect(mstp, {
 
 const LuffyApp = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <AppContainer />
       </Provider>

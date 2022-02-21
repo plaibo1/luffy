@@ -1,4 +1,10 @@
 /* home
+.errorBox
+  color: #ff626f
+  border: 2px dashed #ff626f
+  padding: 5px
+  font-family: monospace
+
 
 .Home
   z-index: 10
@@ -54,17 +60,32 @@
   margin-top: 30px
 
 .Home
-
+  position: relative
   &__userData
+    position: relative
     &__about
       span
         background-color: #34ff60
     &__status
+      position: relative
       display: flex
       align-items: center
+      width: 700px
+      text-overflow: ellipsis
+      white-space: nowrap
+      overflow: hidden
+      &::before
+        content: ""
+        position: absolute
+        width: 100px
+        height: 100%
+        background: linear-gradient(36deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 60%)
+        right: 0
+        top: 0
       span
         background-color: #23d1ab
         margin-right: 20px
+
 
   &__friends
     grid-column: 1/11
