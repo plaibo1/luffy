@@ -3,14 +3,18 @@ import { AuthApi } from "../api/api";
 
 const SET_USER_AUTH = 'luffy/auth/SET_USER_AUTH'
 
+
+
 let initialState = {
-    userId: null,
-    email: null,
-    login: null,
+    userId: null as number | null,
+    email: null as string | null,
+    login: null as string | null,
     isAuthorized: false
 }
 
-const userAuthReducer = (state = initialState, action) => {
+export type initialStateAuthType = typeof initialState;
+
+const userAuthReducer = (state = initialState, action:any): initialStateAuthType => {
 
     switch(action.type) {
     
@@ -25,11 +29,23 @@ const userAuthReducer = (state = initialState, action) => {
     }
 } 
 
-export const setUserAuthData = (userId, email, login, isAuthorized) =>
+type setUserAuthDataPayloadObject = {
+    userId:number | null 
+    email:string | null
+    login:string | null
+    isAuthorized:boolean
+}
+
+type setUserAuthData = {
+    type: typeof SET_USER_AUTH,
+    payload: setUserAuthDataPayloadObject
+}
+
+export const setUserAuthData = (userId:number | null, email:string | null, login:string | null, isAuthorized:boolean): setUserAuthData => 
     ({type: SET_USER_AUTH, payload: {userId, email, login, isAuthorized}})
 
 export const authApiRequest = () => {
-    return (dispatch) => {
+    return (dispatch:any) => {
        return AuthApi.getAuthMe()
         .then(data => {
             if (data.resultCode === 0) {
@@ -40,7 +56,7 @@ export const authApiRequest = () => {
     }
 }
 
-export const login = (email, password, rememberMe) => dispatch => {
+export const login = (email:any, password:any, rememberMe:any) => (dispatch:any) => {
     AuthApi.login(email, password, rememberMe)
         .then(res => {
             if (res.data.resultCode === 0) {
@@ -52,7 +68,7 @@ export const login = (email, password, rememberMe) => dispatch => {
         })
 }
 
-export const logout = () => dispatch => {
+export const logout = () => (dispatch:any) => {
     AuthApi.logout()
         .then(res => {
             if (res.data.resultCode === 0) {

@@ -2,11 +2,15 @@ import { authApiRequest } from "./auth-reducer";
 
 const INITIALIZED_SUCCESS = 'luffy/homeStatus/INITIALIZED_SUCCESS'
 
-let initialState = {
+export type initialStateAppType = {
+    initialized: boolean
+}
+
+let initialState:initialStateAppType = {
     initialized: false
 }
 
-const appReducer = (state = initialState, action) => {
+const appReducer = (state = initialState, action: any):initialStateAppType => {
 
     switch(action.type) {
 
@@ -21,9 +25,14 @@ const appReducer = (state = initialState, action) => {
     }
 }
 
-export const initializedSuccess = () => ({type: INITIALIZED_SUCCESS});
 
-export const initializedApp = () => dispatch => {
+type initializedSuccessActionType = {
+    type: typeof INITIALIZED_SUCCESS
+}
+
+export const initializedSuccess = ():initializedSuccessActionType => ({type: INITIALIZED_SUCCESS});
+
+export const initializedApp = () => (dispatch: any) => {
 
     const authReq = dispatch(authApiRequest());
 

@@ -7,8 +7,15 @@ const SET_USER_PROFILE = 'luffy/homePage/SET_USER_PROFILE';
 const SET_STATUS = 'luffy/homePage/SET_STATUS';
 const SET_USER_AVATAR = 'luffy/homePage/SET_USER_AVATAR';
 
+export type initialStateHomePageType = {
+    postData: Array<{id: number, msg: string, likesCounter: number, img?: string}>
+    friends: Array<{id: number, name: string, avatar: string}>
+    userProfile: any
+    status: string,
+    textareaValue: string
+}
 
-let initialState = {
+let initialState:initialStateHomePageType = {
     postData: [
         {id: 1, msg: "Hello world222", likesCounter: 27},
         {id: 2, msg: "I suck balls and dicks", likesCounter: 322, img: 'https://sun9-65.userapi.com/impg/YnnNHhrAfEPu-XyfGswhi8ecWQgXZgZhwsC89Q/5TSE1aXGyio.jpg?size=1440x1920&quality=96&sign=7c872fa40e75196366bba2ef39d8e5ce&type=album'},
@@ -30,11 +37,13 @@ let initialState = {
 
     status: '',
 
+    textareaValue: ''
+    
 }
 
-const homePageReducer = (state = initialState, action) => {
+const homePageReducer = (state = initialState, action:any):initialStateHomePageType => {
 
-    switch(action.type){
+    switch(action.type) {
         case ADD_POST: {
             if (state.textareaValue === '') return state;
     
@@ -85,25 +94,25 @@ const homePageReducer = (state = initialState, action) => {
 
 } 
 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
+export const setUserProfile = (profile:any) => ({type: SET_USER_PROFILE, profile})
 
-export const addPost = (postText) => ({type: ADD_POST, postText})
+export const addPost = (postText:any) => ({type: ADD_POST, postText})
 
-export const setUserAva = (photos) => ({type: SET_USER_AVATAR, photos})
+export const setUserAva = (photos:any) => ({type: SET_USER_AVATAR, photos})
 
-export const setStatus = (status) => (
+export const setStatus = (status:any) => (
     {type: SET_STATUS, status}
 )
 
-export const getProfile = (userId) => {
-    return async (dispatch) => {
+export const getProfile = (userId:any) => {
+    return async (dispatch:any) => {
         const data = await HomeApi.getProfile(userId)
         dispatch(setUserProfile(data))
     }
 }
 
-export const getStatus = (userId) => {
-    return async (dispatch) => {
+export const getStatus = (userId:any) => {
+    return async (dispatch:any) => {
         const userIdInit = userId ?? 21365
         const data = await HomeApi.getStatus(userIdInit);
 
@@ -111,8 +120,8 @@ export const getStatus = (userId) => {
     }
 }
 
-export const updateStatus = (status) => {
-    return async (dispatch) => {
+export const updateStatus = (status:any) => {
+    return async (dispatch:any) => {
         const res = await HomeApi.updateStatus(status)
 
         if (res.data.resultCode === 0) {
@@ -123,8 +132,8 @@ export const updateStatus = (status) => {
 }
 
 
-export const updatePhoto = (photos) => {
-    return async (dispatch) => {
+export const updatePhoto = (photos:any) => {
+    return async (dispatch:any) => {
         const res = await HomeApi.updateUserPhoto(photos)
 
         if (res.resultCode === 0) {
@@ -135,8 +144,8 @@ export const updatePhoto = (photos) => {
 }
 
 
-export const updateProfile = (profile) => {
-    return async (dispatch, getState) => {
+export const updateProfile = (profile:any) => {
+    return async (dispatch:any, getState:any) => {
 
         const userId = getState().auth.userId;
 
@@ -156,6 +165,6 @@ export const updateProfile = (profile) => {
 
 
 
-export const likeUp = (postId) => ({type: 'POST-LIKE-UP', postId})
+export const likeUp = (postId:any) => ({type: 'POST-LIKE-UP', postId})
 
 export default homePageReducer;

@@ -1,7 +1,12 @@
 const ADD_MSG = 'luffy/dialogPage/ADD-MSG'
 
-let initialState = {
-    dialogsData: [
+export type initialStateDialogDataType = {
+    dialogsData: Array < {id: number, name: string}>
+    msgData: Array < {id: number, msg: string}>
+}
+
+let initialState: initialStateDialogDataType = {
+    dialogsData:  [
         {id: 1, name: 'Alex Ferguson'},
         {id: 2, name: 'Selena Huemez'},
         {id: 3, name: 'LAFLAME'},
@@ -19,7 +24,7 @@ let initialState = {
       ]
 }
 
-const dialogPageReducer = (state = initialState, action) => {
+const dialogPageReducer = (state = initialState, action:any): initialStateDialogDataType => {
 
     switch(action.type) {
         case ADD_MSG:
@@ -39,7 +44,12 @@ const dialogPageReducer = (state = initialState, action) => {
     }
 }
 
-export const addMsgCreator = (msg) => ({type: ADD_MSG, msg})
+type addMsgCreatorType = {
+    type: typeof ADD_MSG
+    msg: string
+}
+
+export const addMsgCreator = (msg:string):addMsgCreatorType => ({type: ADD_MSG, msg})
 
 
 
